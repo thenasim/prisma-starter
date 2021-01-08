@@ -1,0 +1,8 @@
+http://localhost:3030/users
+Content-Type: application/json
+
+{
+  "name": "abir ahmed",
+  "email": "abir@gmail.com",
+  "role": "ADMIN"
+}

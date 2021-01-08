@@ -30,4 +30,4 @@ VALUES('Hello World!!', 'Hey guys, I see a rainbow through this prisma :D', 1),
 ('It does', 'Yeahhh', 1);
 
 -- Drop schema
-DROP TABLE "User"; DROP TABLE "Post"; DROP TYPE "user_role_enum";
+DROP TABLE "posts"; DROP TABLE "users"; DROP TYPE "user_role_enum";

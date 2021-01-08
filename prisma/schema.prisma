@@ -7,24 +7,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model posts {
-  id     Int     @id @default(autoincrement())
-  title  String
-  body   String?
-  userId Int
-  users  users   @relation(fields: [userId], references: [id])
+model User {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(uuid())
+  email     String   @unique
+  name      String
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  posts     Post[]
+
+  @@map(name: "users")
 }
 
-model users {
-  id    Int            @id @default(autoincrement())
-  name  String
-  email String         @unique
-  role  user_role_enum @default(user)
-  posts posts[]
+model Post {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(uuid())
+  title     String
+  body      String?
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  userId    Int
+
+  @@map(name: "posts")
 }
 
-enum user_role_enum {
-  user
-  admin
-  superadmin
+enum UserRole {
+  USER
+  ADMIN
+  SUPERADMIN
 }
