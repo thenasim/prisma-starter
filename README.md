@@ -1,3 +1,3 @@
 # prisma orm
 
-Basic crud and relation with Prisma 2 Orm
+Basic CRUD operation and DB Relation with Prisma 2 Orm
